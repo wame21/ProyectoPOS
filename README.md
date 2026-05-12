@@ -3,6 +3,8 @@
 
 Este proyecto es un ecosistema distribuido de misión crítica diseñado para la eficiencia operativa en negocios agrícolas. Combina la potencia de la nube con la resiliencia del **Edge/Fog Computing** para garantizar que el negocio nunca se detenga, incluso en condiciones de conectividad inestable.
 
+Stratum fue concebido para resolver la fragilidad de los sistemas POS tradicionales. Al implementar una arquitectura de estratos, logramos desacoplar la interfaz de la dependencia constante de la nube, utilizando el protocolo MQTT como el tejido conectivo de baja latencia entre el hardware y el software.
+
 ## 🎯 Visión del Proyecto
 Desarrollado bajo una arquitectura modular, el sistema implementa un modelo de **Soporte de Decisiones (DSS)**. No solo procesa transacciones; utiliza nodos periféricos inteligentes para la captura de datos en tiempo real y su posterior análisis centralizado, permitiendo una escalabilidad agnóstica al modelo de negocio.
 
