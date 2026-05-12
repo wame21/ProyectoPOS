@@ -1,33 +1,34 @@
 # Programa POS 🚀
-### Sistema de Punto de Venta Escalable con Integración IoT
+### Sistema de Punto de Venta con Arquitectura Fog-to-Cloud e Integración IoT
 
-Este proyecto es una solución integral de punto de venta diseñada para la eficiencia operativa en negocios agrícolas y comerciales. No es solo una aplicación de ventas; es un ecosistema distribuido que combina la potencia de la nube con la resiliencia del hardware local.
+Este proyecto es un ecosistema distribuido de misión crítica diseñado para la eficiencia operativa en negocios agrícolas. Combina la potencia de la nube con la resiliencia del **Edge/Fog Computing** para garantizar que el negocio nunca se detenga, incluso en condiciones de conectividad inestable.
 
 ## 🎯 Visión del Proyecto
-Desarrollado con una arquitectura modular, este sistema está diseñado para ser **agnóstico al modelo de negocio**, permitiendo su escalabilidad y adaptación a diversos sectores comerciales. El núcleo del proyecto reside en la sincronización inteligente entre nodos de hardware periféricos y una base de datos centralizada.
+Desarrollado bajo una arquitectura modular, el sistema implementa un modelo de **Soporte de Decisiones (DSS)**. No solo procesa transacciones; utiliza nodos periféricos inteligentes para la captura de datos en tiempo real y su posterior análisis centralizado, permitiendo una escalabilidad agnóstica al modelo de negocio.
 
 ## 🏗️ Arquitectura del Sistema
-El sistema se divide en tres capas fundamentales:
+El sistema opera en una jerarquía de tres niveles:
 
-1.  **Capa de Aplicación (Frontend):** Desarrollada en **Flutter**, proporcionando una interfaz multiplataforma fluida para la gestión de inventarios, ventas y reportes en tiempo real.
-2.  **Capa de Datos (Cloud):** Implementada sobre **Supabase**, gestionando la autenticación, base de datos relacional y almacenamiento de archivos de forma escalable.
-3.  **Capa de Telemetría y Hardware (IoT / Edge Computing):** Utiliza microcontroladores **ESP32** programados con **MicroPython**. La comunicación bidireccional de baja latencia se logra mediante el protocolo **MQTT**, actuando como nodos locales rápidos para la impresión de tickets y captura de datos. Esto garantiza un flujo de información eficiente y resiliencia ante caídas de red, procesando decisiones en milisegundos antes de consolidar la información en la nube.
+1.  **Capa de Aplicación (Frontend - Cloud):** Interfaz multiplataforma en **Flutter** para la gestión administrativa y visualización de analíticas.
+2.  **Capa de Niebla (Fog Computing - Local):** Microcontroladores **ESP32 (MicroPython)** que actúan como servidores locales. Gestionan la persistencia inmediata de ventas y el control de periféricos (impresión térmica, básculas) sin depender de internet latente.
+3.  **Infraestructura de Mensajería:** Comunicación bidireccional mediante **MQTT sobre TLS (Puerto 8883)** utilizando clusters de **HiveMQ Cloud**, garantizando seguridad bancaria en el intercambio de datos M2M.
 
 ## 🛠️ Stack Tecnológico
-* **Frontend:** Flutter, Dart.
-* **Backend as a Service:** Supabase (PostgreSQL, Realtime).
-* **Hardware & IoT:** ESP32, MicroPython.
-* **Protocolos de Comunicación:** MQTT (Mensajería M2M), REST, WebSockets, ESC/POS (Impresoras Térmicas).
+* **Frontend:** Flutter, Dart (State Management con Provider).
+* **Backend & DB:** Supabase (PostgreSQL), RESTful APIs.
+* **IoT & Edge:** ESP32, MicroPython v1.28+.
+* **Protocolos:** MQTT con cifrado TLS 1.2, SSL/TLS Handshaking, WebSockets.
+* **Infraestructura:** CachyOS (Entorno de desarrollo), HiveMQ Cloud (Broker).
 
-## 🚀 Características Principales
-* **Sincronización Off-line:** Capacidad de procesar datos localmente y sincronizar con la nube automáticamente al detectar conexión.
-* **Arquitectura Modular:** Fácil implementación de nuevos módulos de negocio.
-* **Gestión IoT:** Control directo de periféricos de hardware mediante protocolos seriales y Wi-Fi.
-* **Dashboard de Analíticas:** Visualización de métricas clave de rendimiento para la toma de decisiones.
-* **Telemetría M2M (Machine-to-Machine):** Integración nativa con **MQTT** para un intercambio de mensajes ligero, permitiendo disparar eventos de hardware (como abrir cajas registradoras o imprimir) de forma instantánea y remota sin saturar el servidor principal.
+## 🚀 Características Avanzadas
+* **Resiliencia de Red (Offline-First):** Implementación de buffers locales en memoria Flash que permiten la operación total del punto de venta sin conexión a internet, sincronizando lotes de datos (**Batch Processing**) de forma asíncrona.
+* **Optimización de Recursos Embebidos:** Gestión avanzada de memoria mediante **Garbage Collection (GC)** y optimización de payloads JSON para operar en dispositivos con RAM limitada.
+* **Seguridad Industrial:** Conexiones IoT cifradas de extremo a extremo, evitando ataques de interceptación de datos en redes públicas o inestables.
+* **Telemetría en Tiempo Real:** Latencia mínima en el envío de comandos desde la App hacia el hardware para acciones inmediatas (Corte de caja, impresión de tickets).
 
 ## 📖 Investigación e Ingeniería
-Este proyecto sirve como base para el estudio de la **Deuda Técnica** en sistemas concurrentes y cómo el diseño de software debe adaptarse a las limitaciones de los sistemas distribuidos modernos.
+Este proyecto constituye un caso de estudio sobre el **Impacto de los patrones de diseño secuenciales en la deuda técnica y la escalabilidad de sistemas concurrentes modernos**, explorando cómo la arquitectura de software mitiga las limitaciones físicas del hardware en entornos distribuidos.
 
 ---
-Desarrollado por [Wilver](https://github.com/wame21) - Líder Técnico del Proyecto.
+**Ingeniería y Desarrollo:** [Wilver](https://github.com/wame21) - Software Engineer
+*"Transformando datos agrícolas en inteligencia de negocio."*
